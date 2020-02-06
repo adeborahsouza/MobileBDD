@@ -8,6 +8,7 @@ public class PageObjectManager {
 
 	public PageObjectManager(AndroidDriver<AndroidElement> driver) {
 		this.driver = driver;
+	
 	}
 
 //	public HomeScreen getHomeScreen() {
