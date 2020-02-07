@@ -8,16 +8,17 @@ import java.util.logging.Logger;
 
 import org.openqa.selenium.remote.DesiredCapabilities;
 
-import br.com.rsinet.hub_bdd.AdvantageMobileBDD.dataProviders.ReadProperties;
+import br.com.rsinet.hub_bdd.AdvantageMobileBDD.dataProviders.ConfigFileReader;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
 public class DriverManager {
+	private String apkFile;
 	private String deviceName;
 	private static String URL = "http://127.0.0.1:4723/wd/hub";
 	private AndroidDriver<AndroidElement> driver;
 	private String port;
-	private Logger logger = Logger.getLogger("ReadProperties.class");
+	private Logger logger = Logger.getLogger("FileReaderManager.class");
 
 	public AndroidDriver<AndroidElement> getDriver() {
 		if (driver == null)
@@ -26,7 +27,7 @@ public class DriverManager {
 	}
 
 	private AndroidDriver<AndroidElement> createDriver() {
-		ReadProperties prop = new ReadProperties("mobile");
+		ConfigFileReader prop = new ConfigFileReader();
 		Properties props = prop.getProperty();
 		deviceName = props.getProperty("deviceName");
 		String platformVersion = props.getProperty("platformVersion");
@@ -39,6 +40,7 @@ public class DriverManager {
 		DesiredCapabilities capabilities = new DesiredCapabilities();
 		capabilities.setCapability("deviceName", deviceName);
 		capabilities.setCapability("platformName", platformName);
+		capabilities.setCapability("platformVersion", platformVersion);
 		capabilities.setCapability("appPackage", appPackage);
 		capabilities.setCapability("appActivity", appActivity);
 		try {

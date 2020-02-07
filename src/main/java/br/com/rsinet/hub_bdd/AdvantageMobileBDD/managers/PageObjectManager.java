@@ -1,21 +1,25 @@
 package br.com.rsinet.hub_bdd.AdvantageMobileBDD.managers;
 
-import org.openqa.selenium.WebDriver;
+import br.com.rsinet.hub_bdd.AdvantageMobileBDD.pageScreen.HomeScreen;
+import br.com.rsinet.hub_bdd.AdvantageMobileBDD.pageScreen.RegisterScreen;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 
 public class PageObjectManager {
-	private WebDriver driver;
-//	private HomeScreen home;
-	
-	
-	
+	private AndroidDriver driver;
+	private HomeScreen home;
+	private RegisterScreen register;
 
 	public PageObjectManager(AndroidDriver<AndroidElement> driver) {
 		this.driver = driver;
-	
 	}
 
-//	public HomeScreen getHomeScreen() {
-//		return (home == null) ? home = new HomeScreen(driver) : home;
-//	}
+	public HomeScreen getHomeScreen() {
+		return (home == null) ? home = new HomeScreen(driver) : home;
+	}
+
+	public RegisterScreen getRegisterScreen() {
+		return (register == null) ? register = new RegisterScreen(driver) : register;
+	}
 
 }

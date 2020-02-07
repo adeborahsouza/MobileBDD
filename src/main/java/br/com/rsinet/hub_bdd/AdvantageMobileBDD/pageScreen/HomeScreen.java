@@ -6,12 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import com.sun.security.auth.login.ConfigFile;
-import com.sun.tools.classfile.Dependencies.ClassFileReader;
-
 public class HomeScreen {
 	WebDriver driver;
-	ClassFileReader ConfigFile;
 
 	public HomeScreen(WebDriver driver) {
 		this.driver = driver;

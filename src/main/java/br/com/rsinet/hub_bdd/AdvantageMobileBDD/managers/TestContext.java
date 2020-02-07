@@ -1,4 +1,5 @@
 package br.com.rsinet.hub_bdd.AdvantageMobileBDD.managers;
+
 public class TestContext {
 	private DriverManager driverManager;
 	private PageObjectManager pageObjectManager;
