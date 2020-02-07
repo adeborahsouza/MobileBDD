@@ -1,11 +1,16 @@
-Feature: Pesquisa pela lupa
+#language: pt
 
-  Scenario: Pesquisa lupa com sucesso
-    Given Usuario esta na home page
-    When procurar por um produto existente na lupa
-    Then pesquisa e feita
+Funcionalidade: Pesquisar produto pela home
 
-  Scenario: Pesquisa lupa com Falha
-    Given Usuario esta na home page
-    When procurar por um produto inexistente na lupa
-    Then  pesquisa nao e feita
+  Cenario: Pesquisa home com sucesso
+	Dado que o usuario esteja na homepage
+	Quando clicar em uma categoria da home
+	E escolher um produto valido
+	Entao a pesquisa e feita
+
+
+  Cenario: Pesquisa home com falha
+	Dado que o usuario esteja na homepage
+	Quando clicar em uma categoria da home
+	E escolher um produto invalido
+	Entao a pesquisa nao e feita
