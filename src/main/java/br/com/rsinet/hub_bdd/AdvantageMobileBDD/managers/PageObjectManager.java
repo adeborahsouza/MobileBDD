@@ -1,7 +1,7 @@
 package br.com.rsinet.hub_bdd.AdvantageMobileBDD.managers;
 
-import br.com.rsinet.hub_bdd.AdvantageMobileBDD.pageScreen.HomeScreen;
-import br.com.rsinet.hub_bdd.AdvantageMobileBDD.pageScreen.RegisterScreen;
+import br.com.rsinet.hub_bdd.AdvantageMobileBDD.screenObjects.HomeScreen;
+import br.com.rsinet.hub_bdd.AdvantageMobileBDD.screenObjects.RegisterScreen;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.AndroidElement;
 
