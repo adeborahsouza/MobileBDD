@@ -53,7 +53,7 @@ public class HomeScreen {
 
 	public void PesquisaValida() {
 		bxPesquisa.click();
-		bxPesquisa.sendKeys("HP CHROMEBOOK 14 G1(ES)");
+		bxPesquisa.sendKeys("Headphones");
 	}
 
 	public void PesquisaInvalida() {

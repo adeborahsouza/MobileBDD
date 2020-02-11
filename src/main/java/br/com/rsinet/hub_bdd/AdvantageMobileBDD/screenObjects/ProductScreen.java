@@ -6,11 +6,8 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-import com.sun.tools.classfile.Dependencies.ClassFileReader;
-
 public class ProductScreen {
 	WebDriver driver;
-	ClassFileReader ConfigFile;
 
 	public ProductScreen(WebDriver driver) {
 		this.driver = driver;
@@ -20,7 +17,7 @@ public class ProductScreen {
 	@FindBy(how = How.XPATH, using = "//android.widget.RelativeLayout[@content-desc=\"Headphones\"]/android.widget.LinearLayout/android.widget.GridView/android.widget.RelativeLayout[1]")
 	private WebElement prodFone;
 
-	@FindBy(how = How.ID, using = "com.Advantage.aShopping:id/RelativeLayoutProductControl")
+	@FindBy(how = How.XPATH, using = "com.Advantage.aShopping:id/imageViewProduct")
 	private WebElement prodNotebook;
 
 	@FindBy(how = How.ID, using = "com.Advantage.aShopping:id/textViewProductName")
@@ -31,10 +28,6 @@ public class ProductScreen {
 
 	public void Fone() {
 		prodFone.click();
-	}
-
-	public void Notebook() {
-		prodNotebook.click();
 	}
 
 	public void prodTitle() {

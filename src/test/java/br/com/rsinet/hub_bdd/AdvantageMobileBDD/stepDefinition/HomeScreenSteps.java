@@ -23,18 +23,20 @@ public class HomeScreenSteps {
 
 	@Dado("^que o usuario esteja na homepage$")
 	public void que_o_usuario_esteja_na_homepage() {
+		home.clickLupa();
+	}
+
+	@Dado("^que o usuario esteja na pagina de cadastro$")
+	public void que_o_usuario_esteja_na_pagina_cadastro() {
+		home.clickMenuIcon();
+		home.clickLoginIcon();
+		home.clickRegisterIcon();
 	}
 
 	@Quando("^procurar por um produto valido$")
 	public void procurar_por_um_produto_valido() {
 		home.PesquisaValida();
 		home.clickLupa();
-
-	}
-
-	@Entao("^a pesquisa e feita$")
-	public void a_pesquisa_e_feita() {
-		product.Notebook();
 
 	}
 

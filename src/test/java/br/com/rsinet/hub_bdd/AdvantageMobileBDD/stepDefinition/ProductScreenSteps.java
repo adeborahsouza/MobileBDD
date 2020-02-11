@@ -29,9 +29,9 @@ public class ProductScreenSteps {
 	}
 
 	@Entao("^a pesquisa e feita$")
-	public void a_pesquisa_e_feita() {
+	public void a_pesquisa_e_realizada() throws InterruptedException {
+		Thread.sleep(3000);
 		product.Fone();
-
 	}
 
 	@Quando("^clicar em uma categoria invalida$")

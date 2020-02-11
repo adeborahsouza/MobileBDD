@@ -1,19 +1,17 @@
 package br.com.rsinet.hub_bdd.AdvantageMobileBDD.screenObjects;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.Select;
 
-import com.sun.tools.classfile.Dependencies.ClassFileReader;
+import io.appium.java_client.android.AndroidDriver;
 
 public class RegisterScreen {
-	WebDriver driver;
-	ClassFileReader ConfigFile;
 
-	public RegisterScreen(WebDriver driver) {
+	AndroidDriver driver;
+
+	public RegisterScreen(AndroidDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -30,7 +28,7 @@ public class RegisterScreen {
 	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.RelativeLayout/android.widget.EditText")
 	private WebElement bx_ConfPassword;
 
-	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout/android.widget.LinearLayout[4]/android.widget.RelativeLayout/android.widget.EditText")
+	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout[1]/android.widget.EditText")
 	private WebElement bx_FirstName;
 
 	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.RelativeLayout[2]/android.widget.EditText")
@@ -42,7 +40,7 @@ public class RegisterScreen {
 	@FindBy(how = How.ID, using = "com.Advantage.aShopping:id/textViewCountries")
 	private WebElement bx_country;
 
-	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[3]/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.RelativeLayout/android.widget.EditText")
+	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout[2]/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout[2]/android.widget.RelativeLayout/android.widget.EditText")
 	private WebElement bx_State;
 
 	@FindBy(how = How.XPATH, using = "//android.view.ViewGroup[@content-desc=\"Home Page\"]/android.widget.LinearLayout/android.widget.ScrollView/android.widget.LinearLayout/android.widget.LinearLayout[2]/android.widget.LinearLayout/android.widget.RelativeLayout/android.widget.EditText")
@@ -72,7 +70,7 @@ public class RegisterScreen {
 		bx_Password.sendKeys(password);
 	}
 
-	public void enter_ConfPasswordString(String confpassword) {
+	public void enter_ConfPassword(String confpassword) {
 		bx_ConfPassword.sendKeys(confpassword);
 	}
 
@@ -89,8 +87,17 @@ public class RegisterScreen {
 	}
 
 	public void select_Country(String country) {
-		Select selectCountry = new Select(bx_country);
-		selectCountry.selectByVisibleText(country);
+		bx_country.click();
+		driver.findElementByAndroidUIAutomator(
+				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+						+ country + "\").instance(0))")
+				.click();
+	}
+
+	public void scrollDown() {
+		driver.findElementByAndroidUIAutomator(
+				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
+						+ "REGISTER" + "\").instance(0))").click();
 	}
 
 	public void enter_State(String state) {
