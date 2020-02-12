@@ -1,9 +1,11 @@
 package br.com.rsinet.hub_bdd.AdvantageMobileBDD.stepDefinition;
 
+import org.junit.Assert;
+
 import br.com.rsinet.hub_bdd.AdvantageMobileBDD.managers.TestContext;
 import br.com.rsinet.hub_bdd.AdvantageMobileBDD.screenObjects.HomeScreen;
 import br.com.rsinet.hub_bdd.AdvantageMobileBDD.screenObjects.ProductScreen;
-import cucumber.api.PendingException;
+import br.com.rsinet.hub_bdd.AdvantageMobileBDD.screenObjects.RegisterScreen;
 import cucumber.api.java.pt.Dado;
 import cucumber.api.java.pt.Entao;
 import cucumber.api.java.pt.Quando;
@@ -23,7 +25,13 @@ public class HomeScreenSteps {
 
 	@Dado("^que o usuario esteja na homepage$")
 	public void que_o_usuario_esteja_na_homepage() {
-		home.clickLupa();
+//		home.clickLupa();
+	}
+
+	@Quando("^clicar em uma categoria$")
+	public void clicar_em_uma_categoria() {
+		home.clickCategoriaFone();
+
 	}
 
 	@Dado("^que o usuario esteja na pagina de cadastro$")
@@ -47,10 +55,18 @@ public class HomeScreenSteps {
 
 	}
 
-	@Entao("^a pesquisa nao e feita$")
-	public void a_pesquisa_nao_e_feita() {
-		product.noResults();
+	@Entao("^o registro e feito$")
+	public void o_registro_e_feito() {
+		home.clickMenuIcon();
+
+		Assert.assertTrue(home.usuarioCad().isDisplayed());
 
 	}
+
+//	@Entao("^a pesquisa nao e feita$")
+//	public void a_pesquisa_nao_e_feita() {
+
+//
+//	}
 
 }

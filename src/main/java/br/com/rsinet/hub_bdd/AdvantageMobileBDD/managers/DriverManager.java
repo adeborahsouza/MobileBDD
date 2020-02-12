@@ -54,7 +54,6 @@ public class DriverManager {
 	}
 
 	public void closeDriver() {
-		driver.close();
 		driver.quit();
 	}
 

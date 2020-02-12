@@ -1,26 +1,27 @@
 package br.com.rsinet.hub_bdd.AdvantageMobileBDD.runners;
 
+import java.io.File;
+
+import org.junit.AfterClass;
 import org.junit.runner.RunWith;
+
+import com.cucumber.listener.Reporter;
 
 import cucumber.api.CucumberOptions;
 import cucumber.api.junit.Cucumber;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "Features", glue = {
-		"br.com.rsinet.hub_bdd.AdvantageMobileBDD.stepDefinition" }, monochrome = true)
+@CucumberOptions(features = "Features", glue = { "br.com.rsinet.hub_bdd.AdvantageMobileBDD.stepDefinition" }, plugin = {
+		"pretty", "json:target/cucumber-reports/json-report.json", "com.cucumber.listener.ExtentCucumberFormatter:target/cucumber-reports/extent-report.html" }, monochrome = true)
 
 public class TestRunner {
-//
-//	public static String folderPath = System.getProperty("user.dir") + "/target/" + TimeDescription.horas();
-//
-//	@AfterClass
-//	public static void writeExtentReport() {
-//		Reporter.loadXMLConfig(new File(FileReaderManager.getInstance().getConfigReader().getReportConfigPath()));
-//	}
-//
-//	@BeforeClass
-//	public static void createPrintFolder() {
-//		File folderScreenshot = new File(folderPath);
-//		folderScreenshot.mkdir();
-//	}
+
+	@AfterClass
+	public static void writeExtentReport() {
+		Reporter.loadXMLConfig(new File("src/test/java/configs/extent-config.xml"));
+		Reporter.setSystemInfo("OS", "Windows10");
+
+		Reporter.setSystemInfo("Tester Name", "Deborah");
+
+	}
 }

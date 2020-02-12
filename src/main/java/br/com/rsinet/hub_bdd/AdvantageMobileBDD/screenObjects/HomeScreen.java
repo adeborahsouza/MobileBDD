@@ -1,15 +1,16 @@
 package br.com.rsinet.hub_bdd.AdvantageMobileBDD.screenObjects;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-public class HomeScreen {
-	WebDriver driver;
+import io.appium.java_client.android.AndroidDriver;
 
-	public HomeScreen(WebDriver driver) {
+public class HomeScreen {
+	private AndroidDriver driver;
+
+	public HomeScreen(AndroidDriver driver) {
 		this.driver = driver;
 		PageFactory.initElements(driver, this);
 	}
@@ -34,6 +35,9 @@ public class HomeScreen {
 
 	@FindBy(how = How.ID, using = "com.Advantage.aShopping:id/textViewMenuUser")
 	private WebElement usuario_Cad;
+
+	@FindBy(how = How.XPATH, using = "//android.support.v4.widget.DrawerLayout[@content-desc=\"Main Menu\"]/android.widget.FrameLayout/android.support.v7.widget.RecyclerView/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout/android.widget.LinearLayout[1]/android.widget.LinearLayout")
+	private WebElement usuarioCad;
 
 	public void clickMenuIcon() {
 		btn_menuIcon.click();
@@ -68,4 +72,9 @@ public class HomeScreen {
 	public void clickUsuarioCad() {
 		usuario_Cad.click();
 	}
+
+	public WebElement usuarioCad() {
+		return usuarioCad;
+	}
+
 }

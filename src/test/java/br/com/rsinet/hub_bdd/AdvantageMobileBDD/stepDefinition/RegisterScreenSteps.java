@@ -1,5 +1,7 @@
 package br.com.rsinet.hub_bdd.AdvantageMobileBDD.stepDefinition;
 
+import org.junit.Assert;
+
 import br.com.rsinet.hub_bdd.AdvantageMobileBDD.managers.TestContext;
 import br.com.rsinet.hub_bdd.AdvantageMobileBDD.screenObjects.RegisterScreen;
 import cucumber.api.java.pt.Entao;
@@ -35,16 +37,12 @@ public class RegisterScreenSteps {
 		register.click_ConfRegister();
 	}
 
-	@Entao("^o registro e feito$")
-	public void o_registro_e_feito() {
-		register.click_ConfRegister();
-
-	}
-
 	@Entao("^o registro nao e feito$")
 	public void o_registro_nao_e_feito() {
 		register.clickAgree();
 		register.click_ConfRegister();
+
+		Assert.assertFalse(register.btn_ConfRegister().isEnabled());
 
 	}
 
@@ -56,6 +54,8 @@ public class RegisterScreenSteps {
 		register.enter_ConfPassword(confPassword);
 		register.enter_FirstName(firstname);
 		register.enter_LastName(lastname);
+		register.enter_PhoneNumber(phonenumber);
+		register.scrollDown();
 		register.select_Country(country);
 		register.enter_State(state);
 		register.enter_Adress(adress);
@@ -64,7 +64,7 @@ public class RegisterScreenSteps {
 
 	}
 
-	String user = "adeborahsouza";
+	String user = "segreh5h";
 	String email = "adeborahsouza@gmail.com";
 	String password = "68335740Bf";
 	String confPassword = "68335740Bf";

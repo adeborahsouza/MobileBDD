@@ -9,7 +9,7 @@ import io.appium.java_client.android.AndroidDriver;
 
 public class RegisterScreen {
 
-	AndroidDriver driver;
+	private AndroidDriver driver;
 
 	public RegisterScreen(AndroidDriver driver) {
 		this.driver = driver;
@@ -97,7 +97,8 @@ public class RegisterScreen {
 	public void scrollDown() {
 		driver.findElementByAndroidUIAutomator(
 				"new UiScrollable(new UiSelector().scrollable(true).instance(0)).scrollIntoView(new UiSelector().textContains(\""
-						+ "REGISTER" + "\").instance(0))").click();
+						+ "REGISTER" + "\").instance(0))")
+				.click();
 	}
 
 	public void enter_State(String state) {
@@ -122,6 +123,10 @@ public class RegisterScreen {
 
 	public void clickAgree() {
 		bx_Agree.click();
+	}
+
+	public WebElement btn_ConfRegister() {
+		return btn_ConfRegister;
 	}
 
 }
